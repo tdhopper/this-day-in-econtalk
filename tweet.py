@@ -10,9 +10,9 @@ import json
 
 def tweets(month, day):
     with open('data.json', 'r') as f:
-        d = json.loads(f)
+        d = json.load(f)
     for year, content in d.get(str(month), {}).get(str(day), {}).items():
-        yield " ".join(content) + "({})".format(year)
+        yield str(" ".join(content) + " ({})".format(year))
 
 
 def tweet(event, context):
@@ -26,8 +26,5 @@ def tweet(event, context):
     t = tw.Twitter(auth=auth)
 
     now = dt.datetime.now()
-    try:
-        for t in tweets(now.month, now.day):
-            t.PostUpdate(status=t)
-    except Exception as e:
-        print(e)
+    for update in tweets(now.month, now.day):
+        t.statuses.update(status=update)
