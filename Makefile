@@ -1,10 +1,15 @@
+all: update deploy
 
-dependencies:
-	STATIC_DEPS=true pip3 install -Ur requirements.pip -t .
+.PHONY: deploy
+deploy:
+	STATIC_DEPS=true pip3 install -U twitter -t .
+	serverless deploy
 
-prepare: dependencies
-	rm -f lambda_bundle.zip
-	zip -r lambda_bundle *
+.PHONY: update
+update:
+	python scrape_xml.py
 
+.PHONY: clean
 clean:
 	git clean -fd
+

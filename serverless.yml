@@ -1,0 +1,34 @@
+
+service: this-day-in-econtalk
+
+provider:
+  name: aws
+  runtime: python3.6
+  profile: personal
+
+# you can overwrite defaults here
+  stage: prod
+  region: us-east-1
+
+  environment:
+
+    CONSUMER_KEY: ${ssm:econtalk_consumer_key}
+    CONSUMER_SECRET: ${ssm:econtalk_consumer_secret}
+    TOKEN: ${ssm:econtalk_token}
+    TOKEN_SECRET: ${ssm:econtalk_token_secret}
+
+# you can add packaging information here
+#package:
+#  include:
+#    - include-me.py
+#    - include-me-dir/**
+#  exclude:
+#    - exclude-me.py
+#    - exclude-me-dir/**
+
+functions:
+  hello:
+    handler: tweet.tweet
+
+    events:
+      - schedule: rate(1 day)

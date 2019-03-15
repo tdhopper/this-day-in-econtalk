@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
-
 import datetime as dt
 import twitter as tw
 import os
@@ -9,7 +7,7 @@ import json
 
 
 def tweets(month, day):
-    with open('data.json', 'r') as f:
+    with open('econtalk.json', 'r') as f:
         d = json.load(f)
     for year, content in d.get(str(month), {}).get(str(day), {}).items():
         yield str(" ".join(content) + " ({})".format(year))
