@@ -4,7 +4,6 @@ service: this-day-in-econtalk
 provider:
   name: aws
   runtime: python3.6
-  profile: personal
 
 # you can overwrite defaults here
   stage: prod
