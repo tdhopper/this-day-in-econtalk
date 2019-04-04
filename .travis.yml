@@ -7,3 +7,9 @@ before_script:
   - npm install -g serverless
 script:
   - make
+notifications:
+  email:
+    recipients:
+      - tdhopper@gmail.com
+    on_success: always
+    on_failure: always
