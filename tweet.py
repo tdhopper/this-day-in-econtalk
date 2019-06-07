@@ -10,7 +10,7 @@ def tweets(month, day):
     with open('econtalk.json', 'r') as f:
         d = json.load(f)
     for year, content in d.get(str(month), {}).get(str(day), {}).items():
-        yield str(" ".join(content) + " ({})".format(year))
+        yield "🎧 " + str(" ".join(content) + " ({})".format(year))
 
 
 def tweet(event, context):
