@@ -1,10 +1,10 @@
 language: python
 python:
   - "3.6"
-node_js:
-  - 14
 install: pip install -r scrape-requirements.txt
 before_script:
+  - npm install -g n
+  - n 12.18.1
   - npm install -g serverless
 script:
   - make
