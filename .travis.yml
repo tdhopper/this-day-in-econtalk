@@ -1,9 +1,8 @@
-sudo: false
 language: python
 python:
   - "3.6"
 node_js:
-  - node
+  - 14
 install: pip install -r scrape-requirements.txt
 before_script:
   - npm install -g serverless
