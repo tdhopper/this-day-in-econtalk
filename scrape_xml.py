@@ -44,7 +44,7 @@ def get_podcasts(feeds):
     for feed in feeds:
         page = requests.get(feed)
         tree = ET.fromstring(page.content)
-        items = tree.getchildren()[0].findall("item")
+        items = list(tree)[0].findall("item")
         yield from items
 
 
