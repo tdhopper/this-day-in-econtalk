@@ -1,6 +1,6 @@
 
 service: this-day-in-econtalk
-
+variablesResolutionMode: 20210326
 provider:
   name: aws
   runtime: python3.6
